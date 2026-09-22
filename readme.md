@@ -48,13 +48,13 @@ Callback adalah sebuah metode pemanggilan suatu function pada javascript, dimana
 <br>
 
 ```js
-const fs = require('fs')
+const { readFile } = require('node:fs')
 
-fs.readFile('./data/games.json', 'utf-8', (err, data) => {
+readFile('./data/games.json', (err, data) => {
     if (err) console.log(err);
     else console.log(JSON.parse(data)); // JSON.parse digunakan untuk mengubah data dari json menjadi object javascript
 })
-// parameter ketiga disini adalah sebuah function yang dipassing sebagai parameter yang disebut callback, functionnya tidak ditrigger disini melainkan didalam function readFile dari file system
+// parameter kedua disini adalah sebuah function yang dipassing sebagai parameter yang disebut callback, functionnya tidak ditrigger disini melainkan didalam function readFile dari file system
 ```
 
 ## Promise
@@ -66,11 +66,11 @@ Promise adalah sebuah object javascript yang digunakan untuk menghandle proses a
 
 ### Cara membuat promise
 ```js
-const fs = require('fs')
+const { readFile } = require('node:fs')
 
 function readFile(){
    return new Promise((resolve,reject)=>{
-       fs.readFile('./data/games.json','UTF-8',(err,data)=>{
+       readFile('./data/games.json',(err,data)=>{
            if(err){
                reject(err)
            }
@@ -80,19 +80,21 @@ function readFile(){
        })
    })
 }
-// resolve & reject adalah sebuah callback
+
+// resolve untuk handle proses berhasil
+// reject untuk handle ketika error
 ```
 
-### Cara menggunakan promise
+### Cara mengeksekusi promise
 ```js
 // menggunakan function readFile diatas yang sudah dibuat menjadi promise
 readFile()
-.then(result => {
-    console.log(result)
-})
-.catch(error => {
-    console.log(error)
-})
+    .then(result => {
+        console.log(result)
+    })
+    .catch(error => {
+        console.log(error)
+    })
 ```
 <br>
 <br>
@@ -104,7 +106,7 @@ Async await adalah cara modern untuk menghandle proses asynchronus. Dasarnya tet
 // menggunakan function readFile diatas yang sudah dibuat menjadi promise
 async function getData() {
     try {
-        const data = await readFile()
+        const data = await readFile('./data/games.json')
         console.log(data)
     } catch (error) {
         console.log(error)
@@ -114,7 +116,7 @@ async function getData() {
 // arrow function
 const getData2 = async () => {
     try {
-        const data = await readFile()
+        const data = await readFile('./data/games.json')
         console.log(data)
     } catch (error) {
         console.log(error)

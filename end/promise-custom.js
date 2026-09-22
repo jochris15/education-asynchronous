@@ -1,34 +1,32 @@
-const fs = require('fs')
+const { readFile } = require('node:fs')
 
-function readFile() {
+//! Cara bikin promise sendiri
+// ibarat codingan kita disiapin dulu, nanti kita bisa atur kapanpun kita mau kapan codingan tsb mau diselesaikan , tidak seperti callback
+
+// ini codingannya kita delay dulu, belom dieksekusi
+function readPromise() {
     return new Promise((resolve, reject) => {
-        fs.readFile('./data/games.json', 'utf-8', (err, data) => {
+        readFile('./data/events.json', (err, data) => {
             if (err) {
                 reject(err)
             } else {
                 resolve(JSON.parse(data));
             }
-        })
+        });
     })
 }
 
-// promise 
-readFile()
+
+console.log("proses lain");
+console.log("proses lain");
+console.log("proses lain");
+console.log("proses lain");
+
+// cara untuk mengeksekusi codingan yang nanti udah kita delay / janjiin
+readPromise()
     .then((result) => {
         console.log(result);
     })
     .catch((err) => {
         console.log(err);
     })
-
-// Async await
-async function getData() {
-    try {
-        const data = await readFile()
-        console.log(data)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-getData()
