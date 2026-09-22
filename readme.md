@@ -1,8 +1,8 @@
-# Asynchronus
+# Asynchronous
 Kalian ingkatkan kalau node js itu terkenal dengan proses Asynchronous nya ? Nah apa sih proses Asynchronous itu ?
 <br>
 <br>
-Proses asyncrhonous adalah proses pengeksekusian kode yang tidak harus sesuai dengan urutan yang ada atau bisa disebut menjalankan perintah selanjutnya tanpa menunggu perintah sebelumnya selesai.
+Proses asynchronous adalah proses pengeksekusian kode yang tidak harus sesuai dengan urutan yang ada atau bisa disebut menjalankan perintah selanjutnya tanpa menunggu perintah sebelumnya selesai.
 <br>
 <br>
 Contoh proses Synchronus
@@ -21,7 +21,7 @@ console.log('4. Pesanan bambang siap')
 
 <br>
 <br>
-Contoh proses Asynchronus
+Contoh proses asynchronous
 
 ```js
 console.log('1. Kevin datang ke restoran')
@@ -36,11 +36,11 @@ console.log('2. Bambang pesan makanan')
 console.log('3. Koki menyiapkan pesanan')
 console.log('4. Pesanan bambang siap')
 
-// kode diatas mengandung proses asynchronus (setTimout, berguna untuk mendelay suatu proses). **Pesanan kevin siap** akan terprint di terminal dengan urutan terakhir 
+// kode diatas mengandung proses asynchronous (setTimout, berguna untuk mendelay suatu proses). **Pesanan kevin siap** akan terprint di terminal dengan urutan terakhir 
 ```
 
-# Bagaimana cara menghandle operasi asynchronus?
-Pada demo ini kita akan menggunakan **file system** untuk membaca sebuah file yang berisi data games.json, dimana kita akan menghandle proses asynchronusnya dengan 3 cara yaitu **Callback, Promise, Async await**. JSON adalah sebuah format data yang sering digunakan untuk menyimpan data dalam javascript.
+# Bagaimana cara menghandle operasi asynchronous?
+Pada demo ini kita akan menggunakan **file system** untuk membaca sebuah file yang berisi data games.json, dimana kita akan menghandle proses asynchronousnya dengan 3 cara yaitu **Callback, Promise, Async await**. JSON adalah sebuah format data yang sering digunakan untuk menyimpan data dalam javascript.
 
 ## Callback 
 Callback adalah sebuah metode pemanggilan suatu function pada javascript, dimana suatu function dipanggil / di-eksekusi pada function lain dan menjadi sebuah paramater
@@ -58,9 +58,9 @@ readFile('./data/games.json', (err, data) => {
 ```
 
 ## Promise
-Promise adalah sebuah object javascript yang digunakan untuk menghandle proses asynchronus, cara kerjanya seperti membuat janji kepada seseorang. JS Promise merepresentasikan operasi yang belum selesai, tetapi diekspetasikan akan selesai di masa mendatang.
+Promise adalah sebuah object javascript yang digunakan untuk menghandle proses asynchronous, cara kerjanya seperti membuat janji kepada seseorang. JS Promise merepresentasikan operasi yang belum selesai, tetapi diekspetasikan akan selesai di masa mendatang.
 ### Promise state
-1. Pending (operasi asynchronus belum selesai)
+1. Pending (operasi asynchronous belum selesai)
 2. Fullfilled (promise sudah selesai dan memiliki hasil)
 3. Rejected (operasi promise gagal)
 
@@ -100,7 +100,7 @@ readFile()
 <br>
 
 ## Async Await
-Async await adalah cara modern untuk menghandle proses asynchronus. Dasarnya tetap menunggunakan promise tetapi async await menyediakan cara yang lebih intuitif dan lebih fleksible.
+Async await adalah cara modern untuk menghandle proses asynchronous. Dasarnya tetap menunggunakan promise tetapi async await menyediakan cara yang lebih intuitif dan lebih fleksible.
 ### Cara menggunakan async await
 ```js
 // menggunakan function readFile diatas yang sudah dibuat menjadi promise
